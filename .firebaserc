@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "login-app-1ff05": {
+      "hosting": {
+        "login-pwa": [
+          "login-app-1ff05"
+        ]
+      }
+    }
+  }
+}

@@ -1,18 +1,12 @@
 # LoginPwa
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.0.
+Install the Angular CLI to run this project: `npm install -g @angular/cli`
 
-## Development server
+Clone repository in your local machine and run `npm install` on root project directory to install dependencies
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Run app on localhost
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `ng serve`. Then navigate to `http://localhost:4200/`.
 
 ## Running unit tests
 
@@ -22,6 +16,8 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+# Project comments
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Initially, the Firebase Authentication metadata.lastSignInTime field was proposed to be used as the last login field, but I found some issues like this one: https://github.com/firebase/firebase-js-sdk/issues/662 and the fact that lastSignInTime is updated before the login data is returned by the Auth service, causing the same result every time (clock always inits in zero).
+
+I decided to use Firestore database with authentication to manage the lastSignInTime field read / update field manually as an approach to the solution.
