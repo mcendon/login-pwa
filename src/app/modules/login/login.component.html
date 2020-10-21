@@ -1,8 +1,10 @@
 <div class="container mt-5">
-  <div class="text-center align-middle top-image">
+  <div
+    class="text-center align-middle top-image animate__animated animate__bounceInLeft"
+  >
     <img src="../../assets/padlock.png" class="img-fluid padlock" alt="login" />
   </div>
-  <div class="mt-3">
+  <div class="mt-3 animate__animated animate__fadeIn">
     <form [formGroup]="loginForm" (ngSubmit)="login()">
       <app-input
         type="text"
