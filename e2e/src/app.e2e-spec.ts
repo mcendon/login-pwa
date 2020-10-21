@@ -15,7 +15,7 @@ describe('workspace-project App', () => {
 
   it('should fill password input', () => {
     page.navigateTo();
-    expect(page.fillPasswordInput()).toEqual('123456');
+    expect(page.fillPasswordInput()).toEqual('T3stuser1$');
   });
 
   it('should validate form', () => {

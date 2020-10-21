@@ -10,19 +10,19 @@ _User 1_
 
 Email: user1@test.com
 
-Password: 123456
+Password: T3stuser1\$
 
 _User 2_
 
 Email: user2@test.com
 
-Password: 123456
+Password: T3stuser2\$
 
 _User 3_
 
 Email: user3@test.com
 
-Password: 123456
+Password: T3stuser3\$
 
 # Development setup
 

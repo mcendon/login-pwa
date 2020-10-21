@@ -13,7 +13,7 @@ export class AppPage {
 
   fillPasswordInput(): Promise<string> {
     let el = element(by.css("input[type='password']"));
-    el.sendKeys('123456');
+    el.sendKeys('T3stuser1$');
     return el.getAttribute('value') as Promise<string>;
   }
 
