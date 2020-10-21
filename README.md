@@ -1,10 +1,10 @@
-# LoginPwa
+## Login PWA Application
 
-Install the Angular CLI to run this project: `npm install -g @angular/cli`
+App is deployed in Firebase and running as a PWA on the following URL: https://login-app-1ff05.web.app/
 
-Clone repository in your local machine and run `npm install` on root project directory to install dependencies
+It can be installed as a PWA application on a web browser and / or a mobile device
 
-I created 3 users to login with:
+Available users to login with:
 
 _User 1_
 
@@ -24,6 +24,12 @@ Email: user3@test.com
 
 Password: 123456
 
+# Development setup
+
+Install the Angular CLI to run this project: `npm install -g @angular/cli`
+
+Clone repository in your local machine and run `npm install` on root project directory to install dependencies
+
 ## Run app on localhost
 
 Run `ng serve`. Then navigate to `http://localhost:4200/`.
@@ -36,7 +42,7 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Project comments
+## Other project comments
 
 Initially, the Firebase Authentication metadata.lastSignInTime field was proposed to be used as the last login field, but I found some issues like this one: https://github.com/firebase/firebase-js-sdk/issues/662 and the fact that lastSignInTime is updated before the login data is returned by the Auth service, causing the same result every time (clock always inits in zero).
 
