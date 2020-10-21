@@ -5,7 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
   template: ` <h1>
       {{ value | zerofill: 2 }}
     </h1>
-    <small>{{ label }}</small>`,
+    <small class="label">{{ label }}</small>`,
   styles: [
     `
       :host {
@@ -13,7 +13,7 @@ import { Component, Input, OnInit } from '@angular/core';
         padding: 18px;
         color: #777;
       }
-      small {
+      .label {
         display: block;
       }
     `,

@@ -1,0 +1,13 @@
+<div class="form-group">
+  <input
+    [type]="type"
+    [placeholder]="placeholder"
+    class="form-control"
+    [class.is-invalid]="isInvalid"
+    [disabled]="isDisabled"
+    [(ngModel)]="input"
+    (ngModelChange)="onChange($event)"
+    (blur)="onTouched()"
+  />
+  <small *ngIf="isInvalid" class="text-danger">{{ invalidText }}</small>
+</div>

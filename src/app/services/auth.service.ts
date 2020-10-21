@@ -4,8 +4,8 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
-import { UserModel } from '../models/user.model';
 import { Observable } from 'rxjs';
+import { LAST_SIGN_IN_TIME_KEY } from '../consts';
 
 interface FirebaseUserItem {
   lastSignInTime: Date;
@@ -22,17 +22,23 @@ export class AuthService {
     private fireStore: AngularFirestore
   ) {}
 
-  login = (user: UserModel) => {
+  login = (email: string, password: string) => {
     return new Promise<firebase.auth.UserCredential>((resolve, reject) => {
       this.fireAuth
-        .signInWithEmailAndPassword(user.email, user.password)
+        .signInWithEmailAndPassword(email, password)
         .then(async (data) => {
           this.user = data.user;
-          await this.saveLastSignInTime();
-          await this.updateLastSignInTime();
+          try {
+            await this.saveLastSignInTime();
+            await this.updateLastSignInTime();
+          } catch (e) {
+            reject({ type: 1, error: e });
+          }
           resolve(data);
         })
-        .catch((error) => reject(error));
+        .catch((e) => {
+          reject({ type: 2, error: e });
+        });
     });
   };
 
@@ -41,22 +47,27 @@ export class AuthService {
   };
 
   private saveLastSignInTime = () => {
-    return new Promise<void>((resolve) => {
+    return new Promise<void>((resolve, reject) => {
       this.fireStore
         .collection('users')
         .doc(this.user.uid)
         .get()
-        .subscribe((storeData) => {
-          let millis = storeData.get('lastSignInTime').seconds * 1000;
-          localStorage.setItem('lastSignInTime', millis.toString());
-          this.lastSignInTime = millis;
-          resolve();
-        });
+        .subscribe(
+          (storeData) => {
+            const millis = storeData.get(LAST_SIGN_IN_TIME_KEY).seconds * 1000;
+            localStorage.setItem(LAST_SIGN_IN_TIME_KEY, millis.toString());
+            this.lastSignInTime = millis;
+            resolve();
+          },
+          () => {
+            reject();
+          }
+        );
     });
   };
 
   private updateLastSignInTime = (): Promise<void> => {
-    let itemDoc: AngularFirestoreDocument<FirebaseUserItem> = this.fireStore
+    const itemDoc: AngularFirestoreDocument<FirebaseUserItem> = this.fireStore
       .collection('users')
       .doc(this.user.uid);
     return itemDoc.update({
@@ -65,8 +76,10 @@ export class AuthService {
   };
 
   getLastSignInTime = (): number => {
-    if (this.lastSignInTime === null) {
-      this.lastSignInTime = parseInt(localStorage.getItem('lastSignInTime'));
+    if (!this.lastSignInTime) {
+      this.lastSignInTime = parseInt(
+        localStorage.getItem(LAST_SIGN_IN_TIME_KEY)
+      );
     }
     return this.lastSignInTime;
   };

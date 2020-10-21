@@ -1,6 +1,26 @@
 <div class="container mt-5">
   <div class="text-center align-middle top-image">
-    <img src="../../assets/padlock.png" class="img-fluid" alt="login" />
+    <img src="../../assets/padlock.png" class="img-fluid padlock" alt="login" />
   </div>
-  <app-login-form></app-login-form>
+  <div class="mt-3">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <app-input
+        type="text"
+        placeholder="Email"
+        [isInvalid]="emailIsInvalid"
+        formControlName="email"
+        invalidText="Enter a valid email address (mail@example.com)"
+      ></app-input>
+      <app-input
+        type="password"
+        placeholder="Password"
+        [isInvalid]="passwordIsInvalid"
+        formControlName="password"
+        invalidText="Enter a valid password (6 characters minimum)"
+      ></app-input>
+      <div class="text-center">
+        <app-button type="submit" text="Log In"></app-button>
+      </div>
+    </form>
+  </div>
 </div>

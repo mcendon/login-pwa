@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { CounterItemComponent } from './counter-item.component';
-import { ZerofillPipe } from '../../shared/pipes/zerofill.pipe';
+import { ZerofillPipe } from '../../modules/shared/pipes/zerofill.pipe';
 
 describe('CounterItemComponent', () => {
   beforeEach(async () => {

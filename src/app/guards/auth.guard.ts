@@ -10,7 +10,7 @@ export class AuthGuard implements CanLoad {
   canLoad(): Promise<boolean> {
     return new Promise<boolean>((resolve) => {
       this.auth.getUser().subscribe((user) => {
-        if (user !== null) {
+        if (user) {
           resolve(true);
         } else {
           resolve(false);

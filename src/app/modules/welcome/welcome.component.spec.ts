@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { WelcomeComponent } from './welcome.component';
 
@@ -13,6 +14,14 @@ describe('WelcomeComponent', () => {
               resolve();
             }),
             getLastSignInTime: () => new Date().getTime(),
+          }),
+        },
+        {
+          provide: Router,
+          useFactory: (fn) => ({
+            navigate: new Promise<void>((resolve) => {
+              resolve();
+            }),
           }),
         },
       ],
