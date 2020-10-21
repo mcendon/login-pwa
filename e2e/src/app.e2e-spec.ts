@@ -1,5 +1,5 @@
 import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
+import { browser, by, element, logging } from 'protractor';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -8,16 +8,45 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should fill email input', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('login-pwa app is running!');
+    expect(page.fillEmailInput()).toEqual('user1@test.com');
+  });
+
+  it('should fill password input', () => {
+    page.navigateTo();
+    expect(page.fillPasswordInput()).toEqual('123456');
+  });
+
+  it('should validate form', () => {
+    page.navigateTo();
+    page.fillInvalidEmailInput();
+    page.fillInvalidPasswordInput();
+    page.submitForm();
+    const errorTexts = element.all(by.css('small.text-danger'));
+    expect(errorTexts.count()).toEqual(2);
+    expect(errorTexts.get(0).getText()).toContain(
+      'Enter a valid email address (mail@example.com)'
+    );
+    expect(errorTexts.get(1).getText()).toContain(
+      'Enter a valid password (6 characters minimum)'
+    );
+  });
+
+  it('should login success', () => {
+    page.navigateTo();
+    page.fillEmailInput();
+    page.fillPasswordInput();
+    page.submitForm();
   });
 
   afterEach(async () => {
     // Assert that there are no errors emitted from the browser
     const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-    expect(logs).not.toContain(jasmine.objectContaining({
-      level: logging.Level.SEVERE,
-    } as logging.Entry));
+    expect(logs).not.toContain(
+      jasmine.objectContaining({
+        level: logging.Level.SEVERE,
+      } as logging.Entry)
+    );
   });
 });
