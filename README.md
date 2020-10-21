@@ -28,6 +28,8 @@ _User 3_
 - Protractor (e2e) (http://www.protractortest.org/)
 - Bootstrap 4 (https://getbootstrap.com/)
 - Animate CSS (https://animate.style/)
+- Sweetalert2 (https://sweetalert2.github.io/)
+- Moment.js (https://momentjs.com/)
 - Firebase Authentication (https://firebase.google.com/docs/auth/)
 - Firebase Cloud Firestore (https://firebase.google.com/docs/firestore)
 - Firebase Hosting (https://firebase.google.com/docs/hosting)
