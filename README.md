@@ -1,4 +1,4 @@
-## Login PWA Application
+# Login PWA Application
 
 App is deployed in Firebase and running as a PWA on the following URL: https://login-app-1ff05.web.app/
 
@@ -25,6 +25,8 @@ Email: user3@test.com
 Password: 123456
 
 # Development setup
+
+_The project is developed on top of Angular 10_
 
 Install the Angular CLI to run this project: `npm install -g @angular/cli`
 
