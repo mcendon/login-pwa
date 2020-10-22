@@ -10,16 +10,19 @@ _User 1_
 
 - Email: user1@test.com
 - Password: T3stuser1\$
+- User disabled?: NO
 
 _User 2_
 
 - Email: user2@test.com
 - Password: T3stuser2\$
+- User disabled?: NO
 
 _User 3_
 
 - Email: user3@test.com
 - Password: T3stuser3\$
+- User disabled?: YES
 
 # Technologies used
 
