@@ -13,8 +13,8 @@ export class AuthGuard implements CanLoad {
         if (user) {
           resolve(true);
         } else {
-          resolve(false);
           this.router.navigate(['login']);
+          resolve(false);
         }
       });
     });

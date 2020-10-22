@@ -40,9 +40,15 @@ Install the Angular CLI to run this project: `npm install -g @angular/cli`.
 
 Clone repository in your local machine and run `npm install` on root project directory to install dependencies.
 
+App has implemented unit test, linter and e2e tests. All tests are passed.
+
 ## Run app on localhost
 
 Run `ng serve`. Then navigate to `http://localhost:4200/`.
+
+## Running linter
+
+Run `ng lint` to execute the linter.
 
 ## Running unit tests
 

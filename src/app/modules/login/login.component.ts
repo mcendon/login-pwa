@@ -39,24 +39,24 @@ export class LoginComponent implements OnInit {
         Validators.minLength(6),
       ]),
     });
-  };
+  }
 
   resetForm = () => {
     this.loginForm.reset({ email: '', password: '' });
-  };
+  }
 
-  get emailIsInvalid() {
+  get emailIsInvalid(): boolean {
     return this.fieldIsInvalid('email');
   }
 
-  get passwordIsInvalid() {
+  get passwordIsInvalid(): boolean {
     return this.fieldIsInvalid('password');
   }
 
   fieldIsInvalid = (name: string) => {
-    let field = this.loginForm.get(name);
+    const field = this.loginForm.get(name);
     return field.invalid && field.touched;
-  };
+  }
 
   login = () => {
     const form = this.loginForm;
@@ -84,5 +84,5 @@ export class LoginComponent implements OnInit {
         });
         this.resetForm();
       });
-  };
+  }
 }

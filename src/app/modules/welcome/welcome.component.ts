@@ -9,8 +9,8 @@ import { AuthService } from 'src/app/services/auth.service';
 export class WelcomeComponent implements OnInit {
   time: number;
   constructor(private auth: AuthService, private router: Router) {
-    let lastSignInTime = auth.getLastSignInTime();
-    if (lastSignInTime !== null) {
+    const lastSignInTime = auth.getLastSignInTime();
+    if (lastSignInTime) {
       this.time = new Date().getTime() - lastSignInTime;
     }
   }
@@ -19,7 +19,7 @@ export class WelcomeComponent implements OnInit {
     this.auth.logout().then(() => {
       this.router.navigate(['login']);
     });
-  };
+  }
 
   ngOnInit(): void {}
 }

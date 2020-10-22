@@ -33,11 +33,14 @@ describe('workspace-project App', () => {
     );
   });
 
-  it('should login success', () => {
+  it('should login success', async () => {
     page.navigateTo();
     page.fillEmailInput();
     page.fillPasswordInput();
-    page.submitForm();
+    await page.submitForm();
+    browser.waitForAngularEnabled(false);
+    await browser.sleep(3000);
+    expect(browser.getCurrentUrl()).toContain('/welcome');
   });
 
   afterEach(async () => {

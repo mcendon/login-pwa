@@ -5,7 +5,11 @@ import {
 } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LAST_SIGN_IN_TIME_KEY } from '../consts';
+import {
+  FIRESTORE_ERROR,
+  LAST_SIGN_IN_TIME_KEY,
+  SIGN_IN_ERROR,
+} from '../consts';
 
 interface FirebaseUserItem {
   lastSignInTime: Date;
@@ -32,19 +36,19 @@ export class AuthService {
             await this.saveLastSignInTime();
             await this.updateLastSignInTime();
           } catch (e) {
-            reject({ type: 1, error: e });
+            reject({ type: FIRESTORE_ERROR, error: e });
           }
           resolve(data);
         })
         .catch((e) => {
-          reject({ type: 2, error: e });
+          reject({ type: SIGN_IN_ERROR, error: e });
         });
     });
-  };
+  }
 
   logout = (): Promise<void> => {
     return this.fireAuth.signOut();
-  };
+  }
 
   private saveLastSignInTime = () => {
     return new Promise<void>((resolve, reject) => {
@@ -64,7 +68,7 @@ export class AuthService {
           }
         );
     });
-  };
+  }
 
   private updateLastSignInTime = (): Promise<void> => {
     const itemDoc: AngularFirestoreDocument<FirebaseUserItem> = this.fireStore
@@ -73,18 +77,18 @@ export class AuthService {
     return itemDoc.update({
       lastSignInTime: new Date(),
     });
-  };
+  }
 
   getLastSignInTime = (): number => {
     if (!this.lastSignInTime) {
       this.lastSignInTime = parseInt(
-        localStorage.getItem(LAST_SIGN_IN_TIME_KEY)
+        localStorage.getItem(LAST_SIGN_IN_TIME_KEY), 10
       );
     }
     return this.lastSignInTime;
-  };
+  }
 
   getUser = (): Observable<firebase.User> => {
     return this.fireAuth.user;
-  };
+  }
 }

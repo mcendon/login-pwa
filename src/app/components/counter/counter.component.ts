@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import * as moment from 'moment';
 
 @Component({
@@ -13,7 +13,7 @@ import * as moment from 'moment';
     `,
   ],
 })
-export class CounterComponent implements OnInit {
+export class CounterComponent implements OnInit, OnDestroy {
   @Input() time: number;
   private counter;
   days = 0;
@@ -32,7 +32,7 @@ export class CounterComponent implements OnInit {
   }
 
   setTime = () => {
-    let duration = moment.duration(this.time);
+    const duration = moment.duration(this.time);
     this.days = duration.days();
     this.hours = duration.hours();
     this.minutes = duration.minutes();
@@ -41,5 +41,5 @@ export class CounterComponent implements OnInit {
     this.counter = setTimeout(() => {
       this.setTime();
     }, 1000);
-  };
+  }
 }

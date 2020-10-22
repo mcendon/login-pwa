@@ -70,20 +70,20 @@ describe('LoginComponent', () => {
     const fixture = TestBed.createComponent(LoginComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector("input[type='text']")).toBeDefined();
+    expect(compiled.querySelector('input[type="text"]')).toBeDefined();
   });
 
   it('should contains a password input', () => {
     const fixture = TestBed.createComponent(LoginComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector("input[type='password']")).toBeDefined();
+    expect(compiled.querySelector('input[type="password"]')).toBeDefined();
   });
 
   it('should contains a submit button', () => {
     const fixture = TestBed.createComponent(LoginComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector("button[type='submit']")).toBeDefined();
+    expect(compiled.querySelector('button[type="submit"]')).toBeDefined();
   });
 });

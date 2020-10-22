@@ -20,7 +20,7 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   @Input() isInvalid: boolean;
   @Input() invalidText: string;
 
-  isDisabled: boolean = false;
+  isDisabled = false;
   input: any;
   onChange: any;
   onTouched: any;

@@ -4,14 +4,14 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'zerofill',
 })
 export class ZerofillPipe implements PipeTransform {
-  transform(number: number, width: number): unknown {
-    width -= number.toString().length;
+  transform(n: number, width: number): unknown {
+    width -= n.toString().length;
     if (width > 0) {
       return (
-        new Array(width + (/\./.test(number.toString()) ? 2 : 1)).join('0') +
-        number
+        new Array(width + (/\./.test(n.toString()) ? 2 : 1)).join('0') +
+        n
       );
     }
-    return number + '';
+    return n + '';
   }
 }

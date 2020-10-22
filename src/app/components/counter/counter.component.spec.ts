@@ -26,7 +26,7 @@ describe('CounterComponent', () => {
     const app = fixture.componentInstance;
     app.time = 345515;
     fixture.detectChanges();
-    let duration = moment.duration(app.time);
+    const duration = moment.duration(app.time);
     expect(app.days).toEqual(duration.days());
     expect(app.hours).toEqual(duration.hours());
     expect(app.minutes).toEqual(duration.minutes());
