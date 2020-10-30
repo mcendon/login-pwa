@@ -67,12 +67,6 @@ Output will be an HTML under /coverage folder in the project
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Other project comments
-
-Initially, the Firebase Authentication metadata.lastSignInTime field was proposed to be used as the last login field, but I found some issues like this one: https://github.com/firebase/firebase-js-sdk/issues/662 and the fact that lastSignInTime is updated before the login data is returned by the Auth service, causing the same result every time (clock always inits in zero).
-
-I decided to use Firestore database with authentication to manage the lastSignInTime field read / update field manually as an approach to the solution.
-
 # Build and Deployment
 
 - You can build the project for production running `ng build --prod` in the root project dir.
@@ -88,5 +82,12 @@ The file is called ngsw.json and can be found under the dist folder:
 https://login-app-1ff05.web.app/ngsw.json
 
 It defines in JSON format, the cache update strategy for the app and assets, and define a hashtable with version information for each file
+
+# Other project comments
+
+Initially, the Firebase Authentication metadata.lastSignInTime field was proposed to be used as the last login field, but I found some issues like this one: https://github.com/firebase/firebase-js-sdk/issues/662 and the fact that lastSignInTime is updated before the login data is returned by the Auth service, causing the same result every time (clock always inits in zero).
+
+I decided to use Firestore database with authentication to manage the lastSignInTime field read / update field manually as an approach to the solution.
+
 
 
