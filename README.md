@@ -57,7 +57,7 @@ Run `ng lint` to execute the linter.
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-# Code Coverage report
+## Code Coverage report
 
 To get a code coverage report you can run the `ng test --no-watch --code-coverage` command. 
 
