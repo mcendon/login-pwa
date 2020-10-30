@@ -57,6 +57,12 @@ Run `ng lint` to execute the linter.
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
+# Code Coverage report
+
+To get a code coverage report you can run the `ng test --no-watch --code-coverage` command. 
+
+Output will be an HTML under /coverage folder in the project
+
 ## Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
@@ -72,3 +78,15 @@ I decided to use Firestore database with authentication to manage the lastSignIn
 - You can build the project for production running `ng build --prod` in the root project dir.
 - Deploy the app in Firebase using Firebase CLI (https://firebase.google.com/docs/cli/) and run the command `firebase deploy`.
 - Target build dir is `<root-project-dir>/dist/login-pwa`.
+
+# Service Worker config
+
+After ng build --prod command, Angular PWA generates a service worker configuration based on ngsw-config.json and the src/manifest.webmanifest.
+
+The file is called ngsw.json and can be found under the dist folder:
+
+https://login-app-1ff05.web.app/ngsw.json
+
+It defines in JSON format, the cache update strategy for the app and assets, and define a hashtable with version information for each file
+
+
